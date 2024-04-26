@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "required": [
+    "baseDomain",
+    "hypershiftImageTag",
+    "instanceType",
+    "nodePoolReplicas",
+    "region",
+    "secret",
+    "serviceAccount",
+    "version"
+  ],
+  "properties": {
+    "baseDomain": {
+      "description": "Base domain already configured in AWS Route53",
+      "type": "string"
+    },
+    "hypershiftImageTag": {
+      "description": "Container image tag for the hypershift CLI",
+      "type": "string"
+    },
+    "instanceType": {
+      "type": "string",
+      "description": "AWS EC2 instance type for worker nodes. Use m5.* for amd64 and m6g.* for arm64.",
+      "enum": [
+        "m5.large", "m5.xlarge", "m5.2xlarge",
+        "m6g.large", "m6g.xlarge", "m6g.2xlarge"
+      ]
+    },
+    "nodePoolReplicas": {
+      "type": "integer",
+      "description": "Size of the worker node pool",
+      "maximum": 3,
+      "minimum": 2
+    },
+    "region": {
+      "type": "string",
+      "description": "AWS region where the cluster will be provisioned"
+    },
+    "secret": {
+      "type": "string",
+      "description": "Name of the secret containing the credentials for hypershift (AWS account creds, OCP pull secret, SSH keypairs, and base domain)"
+    },
+    "serviceAccount": {
+      "type": "string",
+      "description": "Service account used for the workload"
+    },
+    "version": {
+      "type": "string",
+      "description": "OpenShift version"
+    }
+  }
+}

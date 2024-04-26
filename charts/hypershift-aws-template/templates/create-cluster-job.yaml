@@ -1,0 +1,53 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-cluster-{{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  template:
+    metadata:
+      name: create-cluster-{{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount }}
+      restartPolicy: Never
+      containers:
+        - name: hypershift
+          image: quay.io/hypershift/hypershift-operator:{{ .Values.hypershiftImageTag }}
+          args:
+            - create
+            - cluster
+            - aws
+            - --name
+            - {{ .Release.Name }}
+            - --infra-id
+            - {{ .Release.Name | trunc -12 }}
+            - --secret-creds
+            - {{ .Values.secret }}
+            - --region
+            - {{ .Values.region }}
+            - --arch
+            {{- if hasPrefix "m6g." .Values.instanceType }}
+            - arm64
+            {{- else }}
+            - amd64
+            {{- end }}
+            - --instance-type
+            - {{ .Values.instanceType }}
+            - --node-pool-replicas
+            - "{{ .Values.nodePoolReplicas }}"
+            - --release-image
+            - quay.io/openshift-release-dev/ocp-release:{{ .Values.version }}-multi
+            - --control-plane-availability-policy
+            - SingleReplica
+            - --infra-availability-policy
+            - SingleReplica
+            - --annotations
+            - argocd.argoproj.io/tracking-id={{ .Release.Name }}:hypershift.openshift.io/HostedCluster:{{ .Release.Namespace }}/{{ .Release.Name }}
+            - --annotations
+            - argocd.argoproj.io/compare-options=IgnoreExtraneous
+            - --annotations
+            - argocd.argoproj.io/sync-options=Prune=false,Delete=false
+            - --timeout
+            - 20m
+            - --wait

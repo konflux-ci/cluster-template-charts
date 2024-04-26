@@ -1,0 +1,35 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: destroy-cluster-{{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/hook: post-delete
+    helm.sh/hook-delete-policy: hook-succeeded
+    argocd.argoproj.io/hook: PostDelete
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    metadata:
+      name: destroy-cluster-{{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount }}
+      restartPolicy: Never
+      containers:
+        - name: hypershift
+          image: quay.io/hypershift/hypershift-operator:{{ .Values.hypershiftImageTag }}
+          args:
+            - destroy
+            - cluster
+            - aws
+            - --name
+            - {{ .Release.Name }}
+            - --infra-id
+            - {{ .Release.Name | trunc -12 }}
+            - --secret-creds
+            - {{ .Values.secret }}
+            - --region
+            - {{ .Values.region }}
+            - --base-domain
+            - {{ .Values.baseDomain }}

@@ -1,0 +1,13 @@
+# Default values for hypershift-aws-template.
+
+hypershiftImageTag: latest
+
+instanceType: m5.large
+
+nodePoolReplicas: 2
+
+region: us-east-1
+
+secret: hypershift
+
+serviceAccount: cluster-provisioner
