@@ -31,7 +31,7 @@
     "nodePoolReplicas": {
       "type": "integer",
       "description": "Size of the worker node pool",
-      "maximum": 3,
+      "maximum": 10,
       "minimum": 2
     },
     "region": {
