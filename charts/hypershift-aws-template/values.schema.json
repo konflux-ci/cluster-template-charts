@@ -46,6 +46,10 @@
       "type": "string",
       "description": "Service account used for the workload"
     },
+    "timeout": {
+      "type": "string",
+      "description": "How long to wait for provisioning to complete (e.g. '20m')"
+    },
     "version": {
       "type": "string",
       "description": "OpenShift version"

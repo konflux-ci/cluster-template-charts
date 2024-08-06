@@ -11,3 +11,5 @@ region: us-east-1
 secret: hypershift
 
 serviceAccount: cluster-provisioner
+
+timeout: 20m
