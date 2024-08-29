@@ -3,13 +3,13 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-cluster-{{ .Release.Name }}
-  namespace: {{ .Release.Namespace }}
+  namespace: "{{ .Release.Namespace }}"
 spec:
   template:
     metadata:
       name: create-cluster-{{ .Release.Name }}
     spec:
-      serviceAccountName: {{ .Values.serviceAccount }}
+      serviceAccountName: "{{ .Values.serviceAccount }}"
       restartPolicy: Never
       containers:
         - name: hypershift
@@ -19,15 +19,15 @@ spec:
             - cluster
             - aws
             - --name
-            - {{ .Release.Name }}
+            - "{{ .Release.Name }}"
             - --infra-id
-            - {{ .Release.Name | trunc -12 }}
+            - "{{ .Release.Name | trunc -12 }}"
             - --namespace
-            - {{ .Release.Namespace }}
+            - "{{ .Release.Namespace }}"
             - --secret-creds
-            - {{ .Values.secret }}
+            - "{{ .Values.secret }}"
             - --region
-            - {{ .Values.region }}
+            - "{{ .Values.region }}"
             - --arch
             {{- if hasPrefix "m6g." .Values.instanceType }}
             - arm64
@@ -35,7 +35,7 @@ spec:
             - amd64
             {{- end }}
             - --instance-type
-            - {{ .Values.instanceType }}
+            - "{{ .Values.instanceType }}"
             - --node-pool-replicas
             - "{{ .Values.nodePoolReplicas }}"
             - --release-image
