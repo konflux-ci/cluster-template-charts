@@ -10,6 +10,7 @@ nodePoolReplicas: 2
 
 region: us-east-1
 
+# checkov:skip=CKV_SECRET_6:This is the name of a Secret, not its content
 secret: hypershift
 
 serviceAccount: cluster-provisioner
