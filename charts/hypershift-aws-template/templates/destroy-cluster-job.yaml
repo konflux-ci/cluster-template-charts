@@ -18,7 +18,7 @@ spec:
       name: destroy-cluster-{{ .Release.Name }}
     spec:
       serviceAccountName: "{{ .Values.serviceAccount }}"
-      restartPolicy: Never
+      restartPolicy: OnFailure
       {{- include "pod-security-context" . | nindent 6 }}
       volumes:
         {{- include "credential-volumes" . | nindent 8 }}
