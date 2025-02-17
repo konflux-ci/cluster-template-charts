@@ -3,6 +3,17 @@ entries:
   hypershift-aws-template:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2025-02-17T13:18:38.200174186Z"
+    description: A Helm chart for provisioning a hypershift cluster with a single
+      NodePool in AWS
+    digest: 04393ce79ce471deae9e3175aa696349400a92b473394bc90086143a6ed2e1bf
+    name: hypershift-aws-template
+    type: application
+    urls:
+    - https://github.com/konflux-ci/cluster-template-charts/releases/download/hypershift-aws-template-0.1.6/hypershift-aws-template-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2025-01-21T18:18:48.877523486Z"
     description: A Helm chart for provisioning a hypershift cluster with a single
       NodePool in AWS
@@ -111,4 +122,4 @@ entries:
     urls:
     - https://github.com/konflux-ci/cluster-template-charts/releases/download/hypershift-aws-template-0.0.1/hypershift-aws-template-0.0.1.tgz
     version: 0.0.1
-generated: "2025-01-21T18:18:48.877596831Z"
+generated: "2025-02-17T13:18:38.200240279Z"
