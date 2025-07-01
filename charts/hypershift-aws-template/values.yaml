@@ -25,3 +25,5 @@ secret: hypershift
 serviceAccount: cluster-provisioner
 
 timeout: 20m
+
+fips: false
