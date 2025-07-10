@@ -48,8 +48,9 @@ spec:
             - "{{ .Release.Name | trunc -12 }}"
             - --namespace
             - "{{ .Release.Namespace }}"
+            {{- if .Values.fips }}
             - --fips
-            - "{{ .Values.fips }}"
+            {{- end }}
             - --sts-creds
             - /opt/hypershift/sts/token.json
             - --role-arn

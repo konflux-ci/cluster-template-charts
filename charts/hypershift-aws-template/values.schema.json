@@ -18,6 +18,10 @@
       "type": "string",
       "description": "Base domain already configured in AWS Route53"
     },
+    "fips": {
+      "type": "boolean",
+      "description": "Enable FIPS mode for the cluster"
+    },
     "pausePod": {
       "type": "object",
       "description": "Pause pod settings (e.g. for over-provisioning)",
