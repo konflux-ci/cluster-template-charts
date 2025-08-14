@@ -11,7 +11,7 @@ nodePoolReplicas: 2
 pausePod:
   enabled: false
   priorityClass: pause-pod-priority
-  image: registry.access.redhat.com/ubi8/pause:8.10-21.1749481509@sha256:146da1834c7b15e69274ade02dbf2570b7c34e7b01880f0017361fb345ca29f0
+  image: registry.access.redhat.com/ubi8/pause:8.10-1754467798@sha256:543266cf22e290e7c8263f91cb01bb8ac56d62ec6212df01654d06ea7c54f82f
   # Sizing based on the baseline resource consumption for a control plane:
   # https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/hosted_control_planes/preparing-to-deploy-hosted-control-planes#hcp-pod-limits_hcp-sizing-guidance
   cpu: "5"
