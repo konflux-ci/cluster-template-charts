@@ -35,7 +35,7 @@ securityContext:
 
 {{- define "aws-sts-init-container" -}}
 - name: aws-sts
-  image: public.ecr.aws/aws-cli/aws-cli:2.34.45@sha256:981a3a43de3e482f86385a8834232e440754326c2f4e159af17d2aa8707ff975
+  image: public.ecr.aws/aws-cli/aws-cli:2.34.50@sha256:9e8e0f6b133151add7e3e7e13d69e1cd55f0b040e9360106c615717e75f7e969
   {{- include "container-resources" . | nindent 2 }}
   {{- include "container-security-context" . | nindent 2 }}
   env:
