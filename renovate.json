@@ -8,7 +8,8 @@
     "helmv3",
     "helm-values",
     "kubernetes",
-    "regex"
+    "regex",
+    "github-actions"
   ],
   "kubernetes": {
     "fileMatch": [
