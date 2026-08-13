@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Run checkov
-        uses: bridgecrewio/checkov-action@9b70310bcd306d11740313070b940167d6b23085  # v12
+        uses: bridgecrewio/checkov-action@1246d92f57abae29d5db5f9aeeed2a9813e52d7d  # v12
         id: checkov
         with:
           output_format: cli,sarif
